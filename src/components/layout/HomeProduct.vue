@@ -12,6 +12,7 @@
 
 <script>
 import { storeToRefs } from "pinia";
+// import ProductSlider from "../layout/ProductSlider.vue";
 import { computed, ref } from "vue";
 import { useProductStore } from "../../store/productStore";
 import { onMounted } from "vue";
@@ -20,7 +21,7 @@ import HomeProductDetailVue from "./HomeProductDetail.vue";
 
 export default {
   name: "HomeProduct",
-  components: { ProductSlider, HomeProductDetailVue },
+  components: { HomeProductDetailVue },
   setup() {
     const productStore = useProductStore();
     // const data = ref([]);
