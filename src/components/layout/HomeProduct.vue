@@ -20,7 +20,7 @@ import HomeProductDetailVue from "./HomeProductDetail.vue";
 
 export default {
   name: "HomeProduct",
-  components: { HomeProductDetailVue },
+  components: { ProductSlider, HomeProductDetailVue },
   setup() {
     const productStore = useProductStore();
     // const data = ref([]);
