@@ -35,22 +35,22 @@
               <router-link class="router-link" to="/">TRANG CHỦ</router-link>
             </li>
             <li class="bot-item">
-              <router-link class="router-link" to="/keycap bo"
+              <router-link class="router-link" to="/category/keycap bo"
                 >KEYCAP BỘ <font-awesome-icon :icon="['fass', 'caret-down']"
               /></router-link>
               <ul class="drop-down">
                 <li class="drop-down-items bot-item">
-                  <router-link to="/keycap bo" class="router-link"
+                  <router-link to="/category/keycap bo" class="router-link"
                     >Keycap Cherry</router-link
                   >
                 </li>
                 <li class="drop-down-items bot-item">
-                  <router-link to="/keycap bo" class="router-link"
+                  <router-link to="/category/keycap bo" class="router-link"
                     >Keycap SA</router-link
                   >
                 </li>
                 <li class="drop-down-items bot-item">
-                  <router-link to="/keycap bo" class="router-link"
+                  <router-link to="/category/keycap bo" class="router-link"
                     >Keycap XDA</router-link
                   >
                 </li>
@@ -62,23 +62,23 @@
               >
             </li>
             <li class="bot-item">
-              <router-link class="router-link" to="/keycap le"
+              <router-link class="router-link" to="/category/keycap le"
                 >KEYCAP LẺ</router-link
               >
             </li>
             <li class="bot-item">
-              <router-link class="router-link" to="/combo chat"
+              <router-link class="router-link" to="/category/combo"
                 >COMBO CHẤT</router-link
               >
             </li>
             <li class="bot-item mega-content">
-              <router-link class="router-link" to="/san pham"
+              <router-link class="router-link" to="/category/san pham"
                 >SẢN PHẨM <font-awesome-icon :icon="['fass', 'caret-down']"
               /></router-link>
               <div class="supper-dropdown">
                 <li class="supper-drop-item">
                   <router-link
-                    to="/keycap bo"
+                    to="/category/keycap bo"
                     class="router-link supper-drop-link"
                     >Kycap bộ</router-link
                   >
@@ -90,7 +90,7 @@
                 </li>
                 <li class="supper-drop-item">
                   <router-link
-                    to="/keycap le"
+                    to="/category/keycap le"
                     class="router-link supper-drop-link"
                     >Kycap lẻ</router-link
                   >
@@ -101,7 +101,9 @@
                   </ul>
                 </li>
                 <li class="supper-drop-item">
-                  <router-link to="/swich" class="router-link supper-drop-link"
+                  <router-link
+                    to="/category/switch"
+                    class="router-link supper-drop-link"
                     >Switch</router-link
                   >
                   <ul class="supper-child">
@@ -112,7 +114,7 @@
                 </li>
                 <li class="supper-drop-item">
                   <router-link
-                    to="/phu kien"
+                    to="/category/phu kien"
                     class="router-link supper-drop-link"
                     >PHỤ KIỆN</router-link
                   >
@@ -124,7 +126,9 @@
                 </li>
 
                 <li class="supper-drop-item">
-                  <router-link to="/kit" class="router-link supper-drop-link"
+                  <router-link
+                    to="/category/kit"
+                    class="router-link supper-drop-link"
                     >KIT</router-link
                   >
                   <ul class="supper-child">

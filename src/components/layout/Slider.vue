@@ -56,11 +56,8 @@
 </template>
 
 <script>
-// import SectionVue from "./Section.vue";
-
 export default {
   name: "Slider",
-  // components: { SectionVue },
 };
 </script>
 

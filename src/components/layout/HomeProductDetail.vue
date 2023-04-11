@@ -1,16 +1,24 @@
 <template>
   <ul class="product-card_container">
-    <li v-for="data in datas" :key="data" class="product-card_list">
+    <li v-for="(data, index) in datas" :key="index" class="product-card_list">
       <div class="row category-title">
         <h2>CÁC SẢN PHẨM NỔI BẬT</h2>
       </div>
       <ul class="row card-list">
         <li
           v-for="x in data"
-          :key="x"
+          :key="x._id"
           class="col-lg-3 col-md-3 col-sm-6 col-xs-12 card-item"
         >
-          <router-link :to="x.categoryId.type" class="link-to-category">
+          <!-- :to="`/category/${x.categoryId.type}`" -->
+
+          <router-link
+            :to="{
+              name: 'ProductDetail',
+              params: { _id: x._id },
+            }"
+            class="link-to-category"
+          >
             <div class="product_card">
               <img :src="x.image" alt="" class="card_img" />
               <h4 class="card_type">{{ x.categoryId.type }}</h4>

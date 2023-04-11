@@ -6,7 +6,10 @@ export const useProductStore = defineStore("productId", {
   }),
   getters: {
     products: (state) => state.productDatas,
-
+    productList: (state) => (categoryType) =>
+      state.productDatas.filter(
+        (product) => product.categoryId.type === categoryType
+      ),
     switchList: (state) =>
       state.productDatas.filter(
         (product) => product.categoryId.type == "switch"
@@ -35,7 +38,20 @@ export const useProductStore = defineStore("productId", {
       try {
         const respone = await axios("http://localhost:3000/api/product");
         this.productDatas = respone.data;
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getProductById(id) {
+      try {
+        console.log(id);
+        const respone = await axios.get(
+          `http://localhost:3000/api/product/${id}`
+        );
+        return respone.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 });

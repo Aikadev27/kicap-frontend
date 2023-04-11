@@ -10,4 +10,11 @@ html{
 body{
     box-sizing: border-box;
     font-family: cursive !important; 
+
+}
+::-moz-selection {
+    background: rgba(54, 191, 233, 0.392);
+}
+::selection {
+    background: rgba(54, 191, 233, 0.392);
 }

@@ -2,9 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <!-- <ul v-for="x in datas" :key="x">
-        </ul> -->
-        <HomeProductDetailVue :datas="datas" />
+        <HomeProductDetail :datas="datas" />
       </div>
     </div>
   </div>
@@ -13,15 +11,20 @@
 <script>
 import { storeToRefs } from "pinia";
 // import ProductSlider from "../layout/ProductSlider.vue";
-import { computed, ref } from "vue";
+import { computed, onMounted } from "vue";
 import { useProductStore } from "../../store/productStore";
-import { onMounted } from "vue";
 // import component chi tiet
-import HomeProductDetailVue from "./HomeProductDetail.vue";
+import HomeProductDetail from "./HomeProductDetail.vue";
+// import ProductService from "../../services/product.service";
 
 export default {
   name: "HomeProduct",
-  components: { HomeProductDetailVue },
+  components: { HomeProductDetail },
+  // data() {
+  //   return {
+  //     products: [],
+  //   };
+  // },
   setup() {
     const productStore = useProductStore();
     // const data = ref([]);
@@ -45,6 +48,43 @@ export default {
       datas,
     };
   },
+  // mounted() {
+  //   ProductService.getProductData().then((res) => {
+  //     this.products = res.data;
+  //   });
+  // },
+  // computed: {
+  //   switchList() {
+  //     return this.products.filter(
+  //       (product) => product.categoryId.type == "switch"
+  //     );
+  //   },
+  //   keycapsList() {
+  //     return this.products.filter(
+  //       (product) => product.categoryId.type == "keycap bo"
+  //     );
+  //   },
+  //   artisanList() {
+  //     return this.products.filter(
+  //       (product) => product.categoryId.type == "keycap le"
+  //     );
+  //   },
+  //   combosList() {
+  //     return this.products.filter(
+  //       (product) => product.categoryId.type == "combo"
+  //     );
+  //   },
+  //   kitsList() {
+  //     return this.products.filter(
+  //       (product) => product.categoryId.type == "kit"
+  //     );
+  //   },
+  //   accessesList() {
+  //     return this.products.filter(
+  //       (product) => product.categoryId.type == "phu kien"
+  //     );
+  //   },
+  // },
 };
 </script>
 
