@@ -7,7 +7,7 @@
       </div>
       <div class="col-9">
         <div class="row">
-          <div class="List_item">
+          <div class="List_item" v-if="productList">
             <div
               v-for="(product, index) in productList"
               :key="index"

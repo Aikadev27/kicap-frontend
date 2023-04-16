@@ -16,6 +16,16 @@
               >TÀI KHOẢN</router-link
             >
           </li>
+          <li class="contact-item" v-if="isLoged">
+            <button class="contact-item-link logout" @click="logout">
+              ĐĂNG XUẤT
+            </button>
+          </li>
+          <li class="contact-item" v-else>
+            <router-link to="/login" class="contact-item-link"
+              >ĐĂNG NHẬP</router-link
+            >
+          </li>
           <li class="contact-item">
             <router-link to="/cart" class="contact-item-link"
               >GIỎ HÀNG</router-link
@@ -175,18 +185,33 @@
 </template>
 
 <script>
+import { computed } from "vue";
+import { useAuthStore } from "../../store/authStore";
 export default {
   name: "Header",
-  data() {
-    return {
-      isActive: 0,
-    };
-  },
-  methods: {
-    focusOn(e) {
+  setup() {
+    const isActive = 0;
+    const useStore = useAuthStore();
+    const isLoged = computed(() => useStore.isAuthenticated);
+    function focusOn(e) {
       this.isActive = e;
-    },
+    }
+    function logout() {
+      useStore.clearUserData;
+      location.reload();
+    }
+    return { isActive, focusOn, isLoged, logout };
   },
+  // data() {
+  //   return {
+  //     isActive: 0,
+  //   };
+  // },
+  // methods: {
+  //   focusOn(e) {
+  //     this.isActive = e;
+  //   },
+  // },
 };
 </script>
 
@@ -232,6 +257,10 @@ export default {
         cursor: pointer;
         @include hover-text;
         text-decoration: none;
+      }
+      .logout {
+        border: none;
+        background-color: transparent;
       }
     }
   }

@@ -57,7 +57,7 @@
         </div>
         <div class="button col-md-2 col-lg-2 mx-auto">
           <button class="btn btn-primary" type="submit" @click="showAlert">
-            Dang ky
+            Register
           </button>
         </div>
       </form>
@@ -116,7 +116,10 @@ export default {
 .signin {
   padding: 20px;
   margin: 50px;
-  border-radius: 5px;
+  // border-radius: 5px;
+  border-image: linear-gradient(#f72585, #4cc9f0) 30;
+  border-width: 4px;
+  border-style: solid;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
     rgba(0, 0, 0, 0.05) 0px 5px 10px;
   label {
