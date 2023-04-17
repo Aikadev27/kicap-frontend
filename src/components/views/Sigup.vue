@@ -13,6 +13,7 @@
             placeholder="Enter your email"
             v-model="email"
             class="form-control"
+            required
           />
         </div>
         <div class="form-group col-md-12 col-xs-6">
@@ -23,6 +24,7 @@
             placeholder="Enter your full name"
             v-model="fullName"
             class="form-control"
+            required
           />
         </div>
         <div class="form-group col-md-12 col-xs-6">
@@ -33,6 +35,7 @@
             placeholder="Enter your email"
             v-model="userName"
             class="form-control"
+            required
           />
         </div>
         <div class="form-group col-md-12 col-xs-6">
@@ -43,6 +46,7 @@
             placeholder="Enter your password"
             v-model="pass"
             class="form-control"
+            required
           />
         </div>
         <div class="form-group col-md-12 col-xs-6">
@@ -53,6 +57,7 @@
             placeholder="Enter your phone"
             v-model="phone"
             class="form-control"
+            required
           />
         </div>
         <div class="button col-md-2 col-lg-2 mx-auto">
@@ -69,6 +74,8 @@
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 // import AuthService from "../../services/auth.service";
 export default {
   name: "Sigup",
@@ -95,6 +102,13 @@ export default {
           console.log(res.data);
           if (res.data.token) {
             router.push("/");
+            toast.success("ĐĂNG KÝ TÀI KHOẢN THÀNH CÔNG", {
+              autoClose: 3000,
+            });
+          } else {
+            toast.warn("ĐĂNG KÝ THẤT BẠI, VUI LÒNG NHẬP ĐÚNG THÔNG TIN", {
+              autoClose: 3000,
+            });
           }
         })
         .catch((error) => console.log(error));

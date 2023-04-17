@@ -67,7 +67,7 @@
               </ul>
             </li>
             <li class="bot-item">
-              <router-link class="router-link" to="/mod phim"
+              <router-link class="router-link" to="/category/mod phim"
                 >MODS PHÍM</router-link
               >
             </li>
@@ -149,9 +149,7 @@
                 </li>
               </div>
             </li>
-            <li class="bot-item">
-              <router-link class="router-link" to="/blog">BLOG</router-link>
-            </li>
+
             <li class="bot-item">
               <router-link class="router-link" to="/about"
                 >VỀ KICAP <font-awesome-icon :icon="['fass', 'caret-down']"
@@ -187,6 +185,8 @@
 <script>
 import { computed } from "vue";
 import { useAuthStore } from "../../store/authStore";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 export default {
   name: "Header",
   setup() {
@@ -199,6 +199,9 @@ export default {
     function logout() {
       useStore.clearUserData;
       location.reload();
+      toast.success("ĐĂNG XUẤT THÀNH CÔNG", {
+        autoClose: 3000,
+      });
     }
     return { isActive, focusOn, isLoged, logout };
   },
@@ -219,6 +222,7 @@ export default {
 .header {
   margin-top: 10px;
   padding: 10px 0;
+
   .top-header {
     border-bottom: 1px solid $border-color;
     .logo {

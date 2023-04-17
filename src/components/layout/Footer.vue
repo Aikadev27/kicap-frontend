@@ -36,17 +36,17 @@
           <h3 class="title upperCase">Dịch vụ khách hàng</h3>
           <ul class="list-menu">
             <li class="list-item upperCase">
-              <router-link to="/dich-vu" class="link">
+              <router-link to="/huong dan mua hang" class="link">
                 hướng dẫn mua hàng
               </router-link>
             </li>
             <li class="list-item upperCase">
-              <router-link to="/dich-vu" class="link">
+              <router-link to="/dieu khoan dich vu" class="link">
                 điều khoản và dịch vụ
               </router-link>
             </li>
             <li class="list-item upperCase">
-              <router-link to="/dich-vu" class="link">
+              <router-link to="/quy trinh giao hang" class="link">
                 QUY TRÌNH GIAO HÀNG
               </router-link>
             </li>
@@ -56,22 +56,18 @@
           <h3 class="title upperCase">Chính sách khách hàng</h3>
           <ul class="list-menu">
             <li class="list-item upperCase">
-              <router-link to="/chinh-sach" class="link">
+              <router-link to="/chinh sach bao hanh" class="link">
                 CHÍNH SÁCH BẢO HÀNH
               </router-link>
             </li>
             <li class="list-item upperCase">
-              <router-link to="/chinh-sach" class="link">
+              <router-link to="/chinh sach kiem hang" class="link">
                 chính sách kiểm hàng
               </router-link>
             </li>
+
             <li class="list-item upperCase">
-              <router-link to="/chinh-sach" class="link">
-                chính sách bảo hành
-              </router-link>
-            </li>
-            <li class="list-item upperCase">
-              <router-link to="/chinh-sach" class="link">
+              <router-link to="/chinh sach hoan tien" class="link">
                 chính sách trả hàng hoàn tiền
               </router-link>
             </li>

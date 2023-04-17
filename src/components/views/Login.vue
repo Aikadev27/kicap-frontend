@@ -41,6 +41,8 @@ import { ref } from "vue";
 import { useAuthStore } from "../../store/authStore";
 import axios from "axios";
 import { useRouter } from "vue-router";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 export default {
   name: "Login",
   setup() {
@@ -48,6 +50,11 @@ export default {
     const pass = ref("");
     const authStore = useAuthStore();
     const router = useRouter();
+    const notify = () => {
+      toast("Wow so easy !", {
+        autoClose: 1000,
+      }); // ToastOptions
+    };
     async function login() {
       try {
         const response = await axios.post(
@@ -60,13 +67,19 @@ export default {
         // console.log(authStore.isAuthenticated);
         if (authStore.isAuthenticated) {
           router.push("/");
-          alert("LOGIN SUCCESSFULLY");
+          // alert("LOGIN SUCCESSFULLY");
+          toast.success("ĐĂNG NHẬP THÀNH CÔNG", {
+            autoClose: 3000,
+          });
         }
       } catch (error) {
         console.log(error);
+        toast.error("ĐĂNG NHẬP THẤP BẠI, VUI LÒNG ĐĂNG NHẬP LẠI", {
+          autoClose: 3000,
+        });
       }
     }
-    return { userName, pass, login };
+    return { userName, pass, login, notify };
   },
 };
 </script>

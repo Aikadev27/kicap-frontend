@@ -6,7 +6,21 @@ import ProductDetail from "@/components/views/ProductDetail.vue";
 import Cart from "@/components/views/Cart.vue";
 import Sigup from "@/components/views/Sigup.vue";
 import Login from "@/components/views/Login.vue";
+import PageNotFound from "@/components/views/PageNotFound.vue";
+// policy
+import Inspection from "@/components/policy/Inspection.vue";
+import Refund from "@/components/policy/Refund.vue";
+import Warranty from "@/components/policy/Warranty.vue";
+// service
+import Delivery from "@/components/customerService/Delivery.vue";
+import ShoppingGuide from "@/components/customerService/ShoppingGuide.vue";
+import Terms from "@/components/customerService/Terms.vue";
+import Profile from "@/components/user/Profile.vue";
 const routes = [
+  {
+    path: "/:pathMatch(.*)*",
+    component: PageNotFound,
+  },
   {
     path: "/",
     name: "home",
@@ -15,7 +29,10 @@ const routes = [
       default: HomePage,
     },
   },
-
+  {
+    path: "/account",
+    component: Profile,
+  },
   {
     path: "/category/:category",
     name: "CategoryProductList",
@@ -41,6 +58,32 @@ const routes = [
   {
     path: "/login",
     component: Login,
+  },
+  // policy
+  {
+    path: "/chinh sach bao hanh",
+    component: Warranty,
+  },
+  {
+    path: "/chinh sach kiem hang",
+    component: Inspection,
+  },
+  {
+    path: "/chinh sach hoan tien",
+    component: Refund,
+  },
+  // service
+  {
+    path: "/quy trinh giao hang",
+    component: Delivery,
+  },
+  {
+    path: "/huong dan mua hang",
+    component: ShoppingGuide,
+  },
+  {
+    path: "/dieu khoan dich vu",
+    component: Terms,
   },
 ];
 

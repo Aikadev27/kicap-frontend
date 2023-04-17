@@ -9,12 +9,14 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
+// toastify
+import Vue3Toastify from "vue3-toastify";
 library.add(fas, far, fab);
 import router from "./routers";
 const pinia = createPinia();
 app.use(bootstrap);
 app.use(router);
 app.use(pinia);
+app.use(Vue3Toastify);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.mount("#app");
