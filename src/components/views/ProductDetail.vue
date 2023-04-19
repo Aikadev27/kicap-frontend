@@ -23,7 +23,7 @@
           ><br />
           <span>Đặt mua giao hàng tận nơi</span>
         </button>
-        <button class="add-to-cart" @click="addToCart(product)">
+        <button class="add-to-cart" @click="addToCart">
           Thêm vào giỏ hàng
         </button>
         <div class="contact">
@@ -40,20 +40,19 @@
 
 <script>
 import ProductService from "../../services/product.service";
-// import { ref } from "vue";
-// import { useProductStore } from "../../store/productStore";
-import Cart from "./Cart.vue";
+import CartService from "../../services/cart.service";
+import { toast } from "vue3-toastify";
 export default {
   name: "ProductDetail",
-  components: { Cart },
   props: {
     _id: {
       type: String,
       required: true,
     },
   },
+
   data() {
-    return { product: null, quantity: 1, cart: [], show: true };
+    return { product: null, quantity: 1, cart: [], show: false };
   },
   methods: {
     increment() {
@@ -64,20 +63,21 @@ export default {
         this.quantity--;
       }
     },
-    addToCart(product) {
-      const index = this.cart.findIndex(
-        (item) => item.product._id === product._id
-      );
-      if (index === -1) {
-        this.cart.push({
-          product,
-          quantity: 1,
-        });
-      } else {
-        this.cart[index].quantity++;
-      }
-      // alert("Đã thêm vào giỏ hàng");
-      console.log(this.cart);
+    async addToCart() {
+      await CartService.addtoCart({
+        productId: this.product._id,
+        quantity: this.quantity,
+      })
+        .then(() =>
+          toast.success("Đã thêm vào giỏ hàng", {
+            autoClose: 2000,
+          })
+        )
+        .catch(() =>
+          toast.error("thêm không thành công,Vui lòng đăng nhập", {
+            autoClose: 2000,
+          })
+        );
     },
   },
 

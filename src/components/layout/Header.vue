@@ -16,6 +16,11 @@
               >TÀI KHOẢN</router-link
             >
           </li>
+          <li class="contact-item">
+            <router-link to="/cart" class="contact-item-link"
+              >GIỎ HÀNG</router-link
+            >
+          </li>
           <li class="contact-item" v-if="isLoged">
             <button class="contact-item-link logout" @click="logout">
               ĐĂNG XUẤT
@@ -26,11 +31,7 @@
               >ĐĂNG NHẬP</router-link
             >
           </li>
-          <li class="contact-item">
-            <router-link to="/cart" class="contact-item-link"
-              >GIỎ HÀNG</router-link
-            >
-          </li>
+
           <li class="contact-item">
             <i class="fa-solid fa-magnifying-glass"></i>
           </li>
@@ -66,11 +67,7 @@
                 </li>
               </ul>
             </li>
-            <li class="bot-item">
-              <router-link class="router-link" to="/category/mod phim"
-                >MODS PHÍM</router-link
-              >
-            </li>
+
             <li class="bot-item">
               <router-link class="router-link" to="/category/keycap le"
                 >KEYCAP LẺ</router-link
@@ -156,20 +153,12 @@
               /></router-link>
               <ul class="drop-down">
                 <li class="drop-down-items bot-item">
-                  <router-link to="/" class="router-link"
-                    >Giới thiệu</router-link
-                  >
-                </li>
-                <li class="drop-down-items bot-item">
-                  <router-link to="/" class="router-link">Liên hệ</router-link>
-                </li>
-                <li class="drop-down-items bot-item">
-                  <router-link to="/" class="router-link"
+                  <router-link to="/chinh sach bao hanh" class="router-link"
                     >Chính sách bảo hành</router-link
                   >
                 </li>
                 <li class="drop-down-items bot-item">
-                  <router-link to="/" class="router-link"
+                  <router-link to="/chinh sach hoan tien" class="router-link"
                     >Chính sách đổi trả</router-link
                   >
                 </li>
@@ -197,7 +186,7 @@ export default {
       this.isActive = e;
     }
     function logout() {
-      useStore.clearUserData;
+      useStore.clearUserData();
       location.reload();
       toast.success("ĐĂNG XUẤT THÀNH CÔNG", {
         autoClose: 3000,
@@ -205,16 +194,7 @@ export default {
     }
     return { isActive, focusOn, isLoged, logout };
   },
-  // data() {
-  //   return {
-  //     isActive: 0,
-  //   };
-  // },
-  // methods: {
-  //   focusOn(e) {
-  //     this.isActive = e;
-  //   },
-  // },
+
 };
 </script>
 

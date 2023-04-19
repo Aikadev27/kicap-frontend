@@ -58,12 +58,12 @@
         <div class="col-lg-12">
           <p>
             Nếu bạn muốn cập nhật thông tin, vui lòng điền thông tin cần cập
-            nhật vào ô thông tin và nhất "cập nhật"
+            nhật vào ô thông tin và nhấn "update"
           </p>
         </div>
       </div>
       <div class="button col-md-2 col-lg-2">
-        <button class="btn btn-primary" type="submit">Update</button>
+        <button class="btn btn-success" type="submit">Update</button>
       </div>
     </form>
   </div>
@@ -71,12 +71,12 @@
 
 <script>
 import { useAuthStore } from "../../store/authStore";
-// import AuthService from "../../services/auth.service";
+import AuthService from "../../services/auth.service";
 // import { ref } from "vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
 import { reactive } from "vue";
-import axios from "axios";
+// import axios from "axios";
 export default {
   name: "Profile",
   setup() {
@@ -90,15 +90,7 @@ export default {
     });
 
     const updateData = async () => {
-      await axios
-        .patch(`http://localhost:3000/api/auth/update/${user._id}`, formData)
-        .then((res) => {
-          console.log(res.data);
-          toast.success("Cập nhật thành công!", {
-            autoClose: 2000,
-          });
-        })
-        .catch((error) => console.log(error));
+      await AuthService.update(formData);
     };
     return { user, updateData, formData };
   },
@@ -126,6 +118,10 @@ h1 {
     // border-radius: 4px;
     // border-color: #fff;
     border-image: linear-gradient(#f72585, #4cc9f0) 10;
+  }
+  p {
+    margin: 10px 0;
+    font-style: italic;
   }
 }
 </style>

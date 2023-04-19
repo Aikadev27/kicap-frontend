@@ -6,7 +6,7 @@
       <router-view name="slider"></router-view>
     </div>
     <div>
-      <router-view></router-view>
+      <router-view :key="$route.fullPath"></router-view>
     </div>
     <Footer />
   </div>

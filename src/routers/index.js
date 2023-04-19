@@ -16,6 +16,9 @@ import Delivery from "@/components/customerService/Delivery.vue";
 import ShoppingGuide from "@/components/customerService/ShoppingGuide.vue";
 import Terms from "@/components/customerService/Terms.vue";
 import Profile from "@/components/user/Profile.vue";
+import Token from "../utils/token";
+import { useAuthStore } from "../store/authStore";
+import AuthService from "../services/auth.service";
 const routes = [
   {
     path: "/:pathMatch(.*)*",
@@ -90,5 +93,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach(async () => {
+  try {
+    const authStore = useAuthStore();
+    authStore.setToken(Token.token);
+    const user = await AuthService.auth();
+    authStore.setUser(user.data);
+  } catch (error) {}
 });
 export default router;

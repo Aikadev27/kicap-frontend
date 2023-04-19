@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import axios from "axios";
+import Token from "@/utils/token";
 
 export const useAuthStore = defineStore("userId", {
   state: () => ({
@@ -17,14 +18,16 @@ export const useAuthStore = defineStore("userId", {
     },
     setToken(token) {
       this.token = token;
+      Token.token = token;
     },
     clearToken() {
       this.token = null;
       delete axios.defaults.headers.common["Authorization"];
     },
     clearUserData() {
-      (this.user = null), (this.token = null);
-      this.isAuthenticated = false;
+      this.user = null;
+      this.token = null;
+      Token.token = null;
     },
   },
 });

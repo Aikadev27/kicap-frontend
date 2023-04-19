@@ -76,7 +76,6 @@ import { useRouter } from "vue-router";
 import { ref } from "vue";
 import { toast } from "vue3-toastify";
 import "vue3-toastify/dist/index.css";
-// import AuthService from "../../services/auth.service";
 export default {
   name: "Sigup",
   setup() {

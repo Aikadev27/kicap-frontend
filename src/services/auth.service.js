@@ -1,4 +1,5 @@
 import axios from "axios";
+import client from "../utils/client";
 
 class AuthService {
   async getUser() {
@@ -25,11 +26,14 @@ class AuthService {
       .then(() => console.log("dang nhap thanh cong"))
       .catch((error) => console.log(error));
   }
-  async update() {
-    await axios
-      .patch("http://localhost:3000/api/auth/:userName")
+  static async update(form) {
+    await client
+      .patch("auth/update", form)
       .then(() => console.log("cap nhat thanh cong"))
       .catch((error) => console.log(error));
+  }
+  static auth() {
+    return client.get("auth");
   }
 }
 

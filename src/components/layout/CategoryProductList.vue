@@ -40,7 +40,6 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
 import { useProductStore } from "../../store/productStore";
 import Filter from "../layout/Filter.vue";
 export default {

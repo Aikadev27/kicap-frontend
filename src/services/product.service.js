@@ -1,11 +1,12 @@
-import axios from "axios";
+// import axios from "axios";
+import client from "../utils/client";
 
 class ProductService {
   static getProductData() {
-    return axios.get("http://localhost:3000/api/product");
+    return client.get("product");
   }
   static getProductById(id) {
-    return axios.get(`http://localhost:3000/api/product/${id}`);
+    return client.get(`product/${id}`);
   }
 }
 
