@@ -12,24 +12,32 @@
             alt=""
             class="col-lg-2 col-md-2 col-2 col-xl-2 pro_img"
           />
-          <div class="pro_name col-lg-4">
+          <div class="pro_name col-lg-4 text-center">
             <h3>{{ product.productId.name }}</h3>
           </div>
-          <div class="col-lg-1">
+          <div class="col-lg-1 text-center">
             <h4>{{ product.quantity }}</h4>
           </div>
-          <div class="pro_price col-lg-3">
+          <div class="pro_price col-lg-3 col-md-3 col-xl-3 col-3 text-center">
             <h3>{{ product.productId.price }}.000đ</h3>
           </div>
           <div class="col-lg-2">
-            <button class="col-lg-2 delete_btn">Xóa</button>
+            <button
+              class="col-lg-2 col-md-3 col-3 col-xl-3 delete_btn"
+              @click="deleteItem(product.productId._id)"
+            >
+              Xóa
+            </button>
           </div>
         </li>
       </ul>
     </div>
     <div class="row total" v-if="data.products">
       <h2 class="col-lg-12">Tổng cộng: {{ data.totalPrice }}</h2>
-      <button class="col-lg-4 mx-auto pay_btn">Thanh toán ngay</button>
+
+      <router-link to="/payment" class="col-lg-4 mx-auto">
+        <button class="pay_btn">Thanh toán ngay</button>
+      </router-link>
     </div>
     <div v-else class="row">
       <img
@@ -42,19 +50,41 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
 import CartService from "../../services/cart.service";
 export default {
   name: "Cart",
   setup() {
     const data = ref([]);
 
-    CartService.getCart()
-      .then((response) => {
-        data.value = response.data;
-      })
-      .catch((error) => console.log(error));
-    return { data };
+    async function fetch() {
+      await CartService.getCart()
+        .then((response) => {
+          data.value = response.data;
+        })
+        .catch((error) => console.log(error));
+    }
+
+    async function deleteItem(productId) {
+      try {
+        await CartService.deleteProduct(productId);
+        toast.success("Sản phẩm đã được xóa", {
+          autoClose: 1000,
+        });
+
+        console.log("Xóa sản phẩm thành công!");
+        fetch();
+      } catch (error) {
+        console.log("Lỗi khi xóa sản phẩm:", error);
+      }
+      console.log(productId);
+    }
+    onMounted(() => {
+      fetch();
+    });
+    return { data, deleteItem, fetch };
   },
 };
 </script>
@@ -104,6 +134,7 @@ ul {
   color: #fff;
   transition: all 0.2s ease-in-out;
   background-color: #000;
+  width: 100%;
   &:hover {
     opacity: 0.3;
   }

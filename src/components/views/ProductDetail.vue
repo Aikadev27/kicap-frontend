@@ -18,11 +18,11 @@
           <input type="text" class="quantity-input" v-model="quantity" />
           <button class="quantity-button" @click="increment">+</button>
         </div>
-        <button class="shop_now">
+        <router-link to="/payment" class="shop_now">
           <span>MUA NGAY VỚI GIÁ {{ product.price }}<u>.000đ</u></span
           ><br />
           <span>Đặt mua giao hàng tận nơi</span>
-        </button>
+        </router-link>
         <button class="add-to-cart" @click="addToCart">
           Thêm vào giỏ hàng
         </button>
@@ -145,6 +145,7 @@ export default {
   margin: 10px 0;
   border: none;
   font-size: 1.4rem;
+  text-decoration: none;
   &:hover {
     background-color: $text-hover-color;
     transition: all 0.2s ease-in-out;

@@ -19,6 +19,7 @@ import Profile from "@/components/user/Profile.vue";
 import Token from "../utils/token";
 import { useAuthStore } from "../store/authStore";
 import AuthService from "../services/auth.service";
+import Payment from "../components/views/Payment.vue";
 const routes = [
   {
     path: "/:pathMatch(.*)*",
@@ -87,6 +88,10 @@ const routes = [
   {
     path: "/dieu khoan dich vu",
     component: Terms,
+  },
+  {
+    path: "/payment",
+    component: Payment,
   },
 ];
 
